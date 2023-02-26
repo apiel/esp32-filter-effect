@@ -4,21 +4,20 @@
 // #define AUDIOKIT_BOARD 1
 
 #include "AudioKitHAL.h"
-#include "SineWaveGenerator.h"
 
 AudioKit kit;
-SineWaveGenerator wave;
 const int BUFFER_SIZE = 1024;
 uint8_t buffer[BUFFER_SIZE];
 
 void setup()
 {
-  LOGLEVEL_AUDIOKIT = AudioKitInfo;
+  LOGLEVEL_AUDIOKIT = AudioKitWarning;
   Serial.begin(115200);
 
   auto cfg = kit.defaultConfig();
   cfg.adc_input = AUDIO_HAL_ADC_INPUT_LINE2;
-  cfg.sample_rate = AUDIO_HAL_16K_SAMPLES;
+  // cfg.sample_rate = AUDIO_HAL_48K_SAMPLES;
+  // cfg.bits_per_sample = AUDIO_HAL_BIT_LENGTH_32BITS;
 
   kit.begin(cfg);
 }
